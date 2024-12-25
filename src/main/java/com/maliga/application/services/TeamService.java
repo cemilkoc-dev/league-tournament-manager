@@ -16,9 +16,8 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    public Team createTeam(Team team) {
-        // Add validation logic here
-        return teamRepository.save(team);
+    public void createTeam(Team team) {
+        teamRepository.save(team);
     }
 
     public List<Team> getAllTeams() {
