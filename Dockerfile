@@ -11,4 +11,4 @@ COPY src ./src/
 
 RUN ./mvnw clean package -DskipTests
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prod", "target/*.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "app/target/*.jar"]
