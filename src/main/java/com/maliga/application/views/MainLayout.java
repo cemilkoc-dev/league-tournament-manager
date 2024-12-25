@@ -4,6 +4,7 @@ package com.maliga.application.views;
 import com.maliga.application.views.fixtures.FixturesView;
 import com.maliga.application.views.home.HomeView;
 import com.maliga.application.views.leagues.LeaguesView;
+import com.maliga.application.views.team.TeamView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.html.Div;
@@ -83,7 +84,7 @@ public class MainLayout extends AppLayout {
         Div layout = new Div();
         layout.addClassNames(Display.FLEX, AlignItems.CENTER, Padding.Horizontal.LARGE);
 
-        H1 appName = new H1("LeagueTournamentManager");
+        H1 appName = new H1("Maliga");
         appName.addClassNames(Margin.Vertical.MEDIUM, Margin.End.AUTO, FontSize.LARGE);
         layout.add(appName);
 
@@ -106,12 +107,10 @@ public class MainLayout extends AppLayout {
 
     private MenuItemInfo[] createMenuItems() {
         return new MenuItemInfo[]{ //
-                new MenuItemInfo("Home", LineAwesomeIcon.HOME_SOLID.create(), HomeView.class), //
-
-                new MenuItemInfo("Leagues", null, LeaguesView.class), //
-
-                new MenuItemInfo("Fixtures", LineAwesomeIcon.PENCIL_RULER_SOLID.create(), FixturesView.class), //
-
+                new MenuItemInfo("Home", LineAwesomeIcon.HOME_SOLID.create(), HomeView.class),
+                new MenuItemInfo("Leagues", null, LeaguesView.class),
+                new MenuItemInfo("Fixtures", null, FixturesView.class),
+                new MenuItemInfo("Teams", null, TeamView.class)
         };
     }
 
