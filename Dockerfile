@@ -11,4 +11,4 @@ COPY src ./src/
 
 RUN ./mvnw clean package -DskipTests
 
-CMD ["java", "-jar", "-Dspring.profiles.active=prod", "app/target/league-tournament-manager.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "/app/target/league-tournament-manager.jar"]
