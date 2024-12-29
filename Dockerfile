@@ -1,17 +1,18 @@
-FROM eclipse-temurin:21-jdk-jammy
+FROM eclipse-temurin:21-jdk-jammy as build
 
 WORKDIR /app
+COPY pom.xml .
+COPY src src
 
-ARG VERSION=1.0-SNAPSHOT
-ENV JAR_FILE=league-tournament-manager-${VERSION}.jar
+COPY .mvn .mvn
+COPY mvnw .
 
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
-
-RUN ./mvnw dependency:go-offline
-
-COPY src ./src/
-
+RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-CMD ["sh", "-c", "java -jar -Dspring.profiles.active=prod /app/target/${JAR_FILE}"]
+FROM eclipse-temurin:21-jdk-jammy
+VOLUME /tmp
+
+COPY --from=build /app/target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+EXPOSE 8080
