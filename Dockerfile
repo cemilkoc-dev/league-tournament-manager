@@ -8,7 +8,7 @@ COPY .mvn .mvn
 COPY mvnw .
 
 RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests -Pproduction
 
 FROM eclipse-temurin:21-jdk-jammy
 VOLUME /tmp
